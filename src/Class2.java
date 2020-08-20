@@ -40,10 +40,4 @@ public class Class2 {
         return numbers;
     }
 
-    // trough a HashMap and print the value based on the Key
-    public static void hashMap()
-    {
-
-
-    }
 }
