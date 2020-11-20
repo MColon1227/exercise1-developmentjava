@@ -1,9 +1,8 @@
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 public class exercise1 {
 
@@ -17,7 +16,7 @@ public class exercise1 {
         System.out.println("--------->");
 
         //Verify biggest number in a list
-        List<Integer> numbers = Stream.of(12, 72, 54, 83, 51, 100).collect(Collectors.toList());
+        List<Integer> numbers = Arrays.asList(12, 72, 54, 83, 51, 100);
         biggestNumber(numbers);
         System.out.println("--------->");
 
@@ -55,55 +54,26 @@ public class exercise1 {
     public static void biggestNumber(List<Integer> numbers)
     {
         System.out.println("The list is : ");
-        numbers.forEach((i) -> System.out.print(i + " "));
+        numbers.forEach((Integer) -> System.out.print(Integer + " "));
         System.out.println();
         Integer bigNumber = numbers.stream()
-                .max(Comparator.comparing(i -> i)).get();
-        System.out.println("Big number is: " + bigNumber);
+                .max(Comparator.comparing(Integer::valueOf))
+                .get();
+        System.out.println("Bigger number is: " + bigNumber);
     }
 
     // Sort a list by asc and desc order
     public static void sortList()
     {
-        int [] numberList =  new int [] {32,342,434,23,31,233};
-        int temp;
-        System.out.printf("Elements of the array: ");
-        for (int i = 0; i < numberList.length; i++) {
-            System.out.print(numberList[i] + " ");
-        }
-        for (int i = 0; i < numberList.length; i++) {
-            for (int x = i+1; x < numberList.length; x++) {
-                if(numberList[i] < numberList[x]) {
-                    temp = numberList[i];
-                    numberList[i] = numberList[x];
-                    numberList[x] = temp;
-                }
-            }
-        }
-        System.out.println();
+        List<Integer> list = Arrays.asList( 32,342,434,23,31,233 );
 
-        System.out.println("Elements of array sorted in descending order: ");
-        for (int i = 0; i < numberList.length; i++) {
-            System.out.print(numberList[i] + " ");
-        }
-        System.out.println();
-        System.out.println("--------->");
-
-        //Sort the array in ascending order
-        for (int i = 0; i < numberList.length; i++) {
-            for (int x = i+1; x < numberList.length; x++) {
-                if(numberList[i] > numberList[x]) {
-                    temp = numberList[i];
-                    numberList[i] = numberList[x];
-                    numberList[x] = temp;
-                }
-            }
-        }
-
-        System.out.println("Elements of array sorted in ascending order: ");
-        for (int i = 0; i < numberList.length; i++) {
-            System.out.print(numberList[i] + " ");
-        }
+        System.out.println("Unsorted List in Java: " + list);
+        // Sorting List in Java in ascending
+        Collections.sort(list);
+        System.out.println("Elements of the list sorted in ascending order: " + list);
+        // sorting List in descending order
+        Collections.sort(list, Collections.reverseOrder());
+        System.out.println("Elements of the list sorted in descending order: " + list);
     }
 
     // Count the length of a string
@@ -117,7 +87,6 @@ public class exercise1 {
         System.out.println("The text is: " + text);
         return String.valueOf(count);
     }
-
 }
 
 
